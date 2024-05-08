@@ -1,5 +1,12 @@
-from test.test import unittest
+import unittest
+from test.test import TestParkingLot
 
-# Run the tests if the script is executed directly
 if __name__ == "__main__":
-    unittest.main()
+    # Load tests from TestParkingLot class
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestParkingLot)
+
+    # Create a test runner
+    runner = unittest.TextTestRunner()
+
+    # Run the tests
+    runner.run(suite)
