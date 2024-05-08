@@ -13,7 +13,7 @@ The functions that the parking lot system can do:
 
 ## UML Diagrams
 
-### For the class Diagram 
+### For the class Diagram [Use this link](https://drive.google.com/file/d/1EpazITfSDOJ0ttPkqPiaLPh5yVoS1rIM/view?usp=sharing) to view
 
 ### For the Activity Diagram [Use this link](https://drive.google.com/file/d/1qRZ4FqlO_Jarik_agjk0XqH6QzgIyk54/view?usp=sharing) to view
 
