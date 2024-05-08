@@ -3,6 +3,12 @@ from typing import NamedTuple, List
 import pytest
 
 class Vehicle(NamedTuple):
+    """
+    A NamedTuple representing a vehicle with the following attributes:
+    - vehicle_type: str
+    - registration_number: str
+    - color: str
+    """
     vehicle_type: str
     registration_number: str
     color: str
@@ -12,6 +18,9 @@ class ParkingLot:
     A class representing a parking lot with multiple floors and slots per floor.
     """
     def __init__(self, parking_lot_id: str):
+        """
+        Initialize a new ParkingLot object with the given parking lot ID.
+        """
         self.parking_lot_id = parking_lot_id
         self.floors: List[List[str]] = []
 
@@ -141,3 +150,4 @@ class TestParkingLot(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
