@@ -45,9 +45,9 @@ class ParkingLot:
 
     def find_available_slot(self, vehicle):
         for floor in self.floors:
-            for slot in floor.slots:
-                if slot.is_available and slot.slot_type == vehicle.vehicle_type:
-                    return slot
+            available_slot = next((slot for slot in floor.slots if slot.is_available and slot.slot_type == vehicle.vehicle_type), None)
+            if available_slot:
+                return available_slot
         return None
 
     def park_vehicle(self, vehicle):
@@ -86,3 +86,6 @@ class ParkingLot:
         occupied_slots = [slot for floor in self.floors for slot in floor.slots if not slot.is_available and slot.slot_type == vehicle_type]
         for floor_number, floor in enumerate(self.floors, 1):
             print(f"Occupied slots for {vehicle_type} on Floor {floor_number}: {','.join(str(slot.slot_number) for slot in occupied_slots if slot.floor == floor_number)}")
+
+    def __str__(self):
+        return f"Parking Lot ID: {self.parking_lot_id}"
