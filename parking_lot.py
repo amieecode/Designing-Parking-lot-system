@@ -8,6 +8,7 @@ class Vehicle:
         :param str color: The color of the vehicle
         :param float speed: The initial speed of the vehicle (in mph)
         """
+        # Assign the input parameters to instance variables
         self.vehicle_type = vehicle_type  #: The type of vehicle
         self.registration_number = registration_number  #: The registration number of the vehicle
         self.color = color  #: The color of the vehicle
@@ -40,9 +41,14 @@ class Vehicle:
 
     @speed.setter
     def speed(self, value):
+        # Validate the input before setting the new speed
         self._validate_input()
+
+        # Check if the new speed is negative
         if value < 0:
             raise ValueError("Speed cannot be negative.")
+
+        # Set the new speed
         self._speed = value
 
     def accelerate(self, amount):
@@ -51,6 +57,7 @@ class Vehicle:
 
         :param float amount: The amount to accelerate by.
         """
+        # Increase the current speed by the given amount
         self.speed += amount
 
     def brake(self, amount):
@@ -59,5 +66,5 @@ class Vehicle:
 
         :param float amount: The amount to brake by.
         """
+        # Set the new speed to the maximum of 0 or the current speed minus the given amount
         self.speed = max(0, self.speed - amount)
-
