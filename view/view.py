@@ -2,28 +2,30 @@ import sys
 from service import ParkingLot
 from service.service import Vehicle
 
+def print_help():
+    """Print the list of available commands"""
+    print("Available commands:")
+    print("  create_parking_lot <rows> <columns>")
+    print("  park_vehicle <registration_number> <color> <vehicle_type>")
+    print("  unpark_vehicle <ticket_id>")
+    print("  display free_count <parking_lot_id> | free_slots <parking_lot_id> | occupied_slots <parking_lot_id>")
+    print("  status")
+    print("  help")
+    print("  exit")
+
+def print_status():
+    """Print the current status of parking lots"""
+    print(f"Current status of parking lots:")
+    for command in command_history:
+        if command[0] == "create_parking_lot":
+            print(f"Parking Lot {command[1]} ({command[2]} x {command[3]}):")
+            print(f"  Free slots: {parking_lot.get_free_slots(command[1])}")
+            print(f"  Occupied slots: {parking_lot.get_occupied_slots(command[1])}")
+
 def main():
     # Initialize parking_lot and command_history variables
     parking_lot = None
     command_history = []
-
-    def print_help():
-        """Print the list of available commands"""
-        print("Available commands:")
-        print("  create_parking_lot <rows> <columns>")
-        print("  park_vehicle <registration_number> <color> <vehicle_type>")
-        print("  unpark_vehicle <ticket_id>")
-        print("  display free_count <parking_lot_id> | free_slots <parking_lot_id> | occupied_slots <parking_lot_id>")
-        print("  exit")
-
-    def print_status():
-        """Print the current status of parking lots"""
-        print(f"Current status of parking lots:")
-        for command in command_history:
-            if command[0] == "create_parking_lot":
-                print(f"Parking Lot {command[1]} ({command[2]} x {command[3]}):")
-                print(f"  Free slots: {parking_lot.get_free_slots(command[1])}")
-                print(f"  Occupied slots: {parking_lot.get_occupied_slots(command[1])}")
 
     while True:
         # Get user input and split it into a command list
@@ -98,4 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
