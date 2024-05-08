@@ -7,3 +7,10 @@ For this problem, we have to design the next-generation parking lot system that 
 ## Requirements
 Create a command-line application for the parking lot system with the following requirements [Learn More](https://workat.tech/machine-coding/practice/design-parking-lot-qm6hwq4wkhp8).
 
+## UML Diagrams
+
+### For the class Diagram 
+
+### For the Activity Diagram [Use this link]() to view
+
+### For the Sequence Diagram 
