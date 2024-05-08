@@ -3,13 +3,14 @@ from service import ParkingLot
 from service.service import Vehicle
 
 def main():
-    parking_lot = ParkingLot("PR1234")
+    parking_lot = None
     while True:
-        command = input().split()
+        command = input("What would you like to do?").split()
         if len(command) == 0:
             break
         if command[0] == "create_parking_lot":
-            parking_lot.create_parking_lot(int(command[1]), int(command[2]))
+            parking_lot=ParkingLot(command[1])
+            print(parking_lot.create_parking_lot(int(command[2]), int(command[3])))
         elif command[0] == "park_vehicle":
             vehicle = Vehicle(command[1], command[2], command[3])
             ticket_id = parking_lot.park_vehicle(vehicle)
