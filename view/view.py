@@ -24,7 +24,7 @@ def print_status():
 
 def main():
     # Initialize parking_lot and command_history variables
-    parking_lot = None
+    parking_lots = {}
     command_history = []
 
     while True:
@@ -50,6 +50,7 @@ def main():
                 rows = int(command[1])
                 columns = int(command[2])
                 parking_lot = ParkingLot(command[1], command[2])
+                parking_lots[command[1]] = parking_lot
                 # Print the result of creating a parking lot
                 print(parking_lot.create_parking_lot(rows, columns))
             except ValueError:
@@ -60,7 +61,12 @@ def main():
                 print("Invalid command. Use: park_vehicle <registration_number> <color> <vehicle_type>")
                 continue
             try:
-                vehicle = Vehicle(command[1], command[2], command[3])
+                parking_lot_id = command[1]
+                if parking_lot_id not in parking_lots:
+                    print(f"No parking lot found with ID {parking_lot_id}")
+                    continue
+                parking_lot = parking_lots[parking_lot_id]
+                vehicle = Vehicle(command[2], command[3], command[4])
                 ticket_id = parking_lot.park_vehicle(vehicle)
                 if ticket_id != "Parking Lot Full":
                     # Print the ticket ID if the vehicle is parked successfully
@@ -75,11 +81,16 @@ def main():
                 print("Invalid command. Use: unpark_vehicle <ticket_id>")
                 continue
             # Print the result of unparking a vehicle
-            print(parking_lot.unpark_vehicle(command[1]))
+            for parking_lot_id, parking_lot in parking_lots.items():
+                print(parking_lot.unpark_vehicle(command[1]))
         elif command[0] == "display":
             # Display information about parking lots
             if len(command) != 3:
                 print("Invalid command. Use: display free_count <parking_lot_id> | free_slots <parking_lot_id> | occupied_slots <parking_lot_id>")
+                continue
+            parking_lot = parking_lots.get(command[2])
+            if parking_lot is None:
+                print(f"No parking lot found with ID {command[2]}")
                 continue
             if command[1] == "free_count":
                 # Display the number of free slots in a parking lot
@@ -100,3 +111,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
